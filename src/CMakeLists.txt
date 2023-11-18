@@ -4,6 +4,7 @@ set(LIB_NAME raytracer_utils)
 add_library(${LIB_NAME} STATIC
   vec3.cpp
   color.cpp
+  ray.cpp
 )
 
 # We need this directory, and users of our library will need it too
