@@ -1,5 +1,7 @@
 # Project
 *.ppm
+*.png
+.venv
 
 # CMake
 build/
