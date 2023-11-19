@@ -5,6 +5,10 @@ add_library(${LIB_NAME} STATIC
   vec3.cpp
   color.cpp
   ray.cpp
+  hittable.cpp
+  hittable_list.cpp
+  sphere.cpp
+  utils.cpp
 )
 
 # We need this directory, and users of our library will need it too
