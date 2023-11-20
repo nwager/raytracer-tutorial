@@ -4,7 +4,7 @@
 
 sphere::sphere(point3 _center, double _radius) : center(_center), radius(_radius) {}
 
-bool sphere::hit(const ray &r, double ray_tmin, double ray_tmax, hit_record &rec) const {
+bool sphere::hit(const ray &r, interval ray_t, hit_record &rec) const {
   vec3 oc = r.origin() - center;
   auto a = r.direction().norm2_sq();
   auto half_b = dot(oc, r.direction());
@@ -16,9 +16,9 @@ bool sphere::hit(const ray &r, double ray_tmin, double ray_tmax, hit_record &rec
 
   // Find the nearest root that lies in the acceptable range
   auto root = (-half_b - sqrtd) / a;
-  if (root <= ray_tmin || root >= ray_tmax) {
+  if (!ray_t.surrounds(root)) {
     root = (-half_b + sqrtd) / a;
-    if (root <= ray_tmin || root >= ray_tmax)
+    if (!ray_t.surrounds(root))
       return false;
   }
 

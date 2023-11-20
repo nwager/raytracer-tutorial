@@ -7,7 +7,7 @@ cd "$( dirname "$0" )"/.. # cd to project root dir
 mkdir -p build
 cd build
 cmake ..
-make
+make -j`nproc`
 rm -f test.ppm test.png
 
 echo "Running target..." 

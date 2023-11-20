@@ -9,6 +9,7 @@ add_library(${LIB_NAME} STATIC
   hittable_list.cpp
   sphere.cpp
   utils.cpp
+  camera.cpp
 )
 
 # We need this directory, and users of our library will need it too
