@@ -6,12 +6,15 @@
 
 class camera {
  public:
-  double aspect_ratio = 1.0; // Ratio of image width over height
-  int    image_width  = 100; // Rendered image width in pixels
+  double aspect_ratio      = 1.0; // Ratio of image width over height
+  int    image_width       = 100; // Rendered image width in pixels
+  int    samples_per_pixel = 10;  // Count of random samples for each pixel
 
   camera() {};
-  camera(double _aspect_ratio, int _image_width)
-    : aspect_ratio(_aspect_ratio), image_width(_image_width) {}
+  camera(double _aspect_ratio, int _image_width, int _samples_per_pixel)
+    : aspect_ratio(_aspect_ratio),
+      image_width(_image_width),
+      samples_per_pixel(_samples_per_pixel) {}
 
   void render(const hittable &world);
 
@@ -24,4 +27,6 @@ class camera {
 
   void initialize();
   color ray_color(const ray &r, const hittable &world) const;
+  ray get_ray(int i, int j) const;
+  vec3 pixel_sample_square() const;
 };
